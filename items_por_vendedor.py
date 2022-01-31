@@ -26,11 +26,12 @@ def logger(seller_id):
     
     json_items = call_api('https://api.mercadolibre.com/sites/MLA/search?seller_id=' + seller_id, token)
 
-    # Condición para logear = que existan items.
-    if json_items['results']:
-
+    try:
         print('Inicio del logeo del usuario: ', seller_id)
 
+        if not json_items['results']:
+            raise ValueError
+        
         # Iteración sobre el diccionario
         for i in json_items['results']:
 
@@ -41,9 +42,14 @@ def logger(seller_id):
         
         print('Fin del logeo del usuario: ', seller_id)
 
-    else:
-        # Print en caso de que no haya items
-        print('El usuario ', seller_id, ' no posee items o es incorrecto.')
+    except KeyError:
+        print('Imposible acceder a la información, revise si el Token ingresado es valido')
+
+    except ValueError:
+         print('El usuario ', seller_id, ' no posee items o es incorrecto.')
+
+    except Exception:
+         raise
 
 
 if __name__ == '__main__':
