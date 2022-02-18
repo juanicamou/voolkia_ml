@@ -1,4 +1,6 @@
 # Script Python - Ítems Vendedores Mercado Libre
+
+### Challenge para entrevista de Voolkia para Soporte de Aplicaciones para MELI
 ### Script que retorna un log con los ítems de cada vendedor (id de vendedor) que se ingrese como parámetro para el site: MLA
 
 ##### Requerimientos
